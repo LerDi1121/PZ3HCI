@@ -1,0 +1,9 @@
+Date Time:	23.1.2019. 19.51.53	Object_1	Value:	5,69
+Date Time:	23.1.2019. 19.52.02	Object_3	Value:	10,35
+Date Time:	23.1.2019. 19.52.13	Object_2	Value:	14,62
+Date Time:	23.1.2019. 19.52.24	Object_2	Value:	14,28
+Date Time:	23.1.2019. 19.52.34	Object_4	Value:	7,84
+Date Time:	23.1.2019. 19.52.38	Object_2	Value:	4,18
+Date Time:	23.1.2019. 19.52.55	Object_4	Value:	2,68
+Date Time:	23.1.2019. 19.53.01	Object_2	Value:	17,81
+Date Time:	23.1.2019. 19.53.08	Object_1	Value:	7,47
