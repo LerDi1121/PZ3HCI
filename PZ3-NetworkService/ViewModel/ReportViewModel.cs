@@ -23,7 +23,7 @@ namespace PZ3_NetworkService.ViewModel
             }
         }
 
-      //  public IEnumerable<Ventil> Ventils { get; private set; }
+      //  public IEnumerable<Vodomer> Vodomeri { get; private set; }
 
         public void LoadReport()
         {
@@ -55,7 +55,7 @@ namespace PZ3_NetworkService.ViewModel
                              FileData.Add(new List<string> { str_split[i], str_split[i + 1], str_split[i + 3], str_split[i + 5] });
                     }
                     Report = "Dan " + todayIs.ToString("dd.MM.yyyy.")+ "\nPromene vrednosti  \n";
-                    foreach (var v in VentilViewModel.Ventils)
+                    foreach (var v in VodomerViewModel.Vodomeri)
                     {
                         string y = "Object " + v.Id.ToString() + ":\n";
                         string x = "";

@@ -33,11 +33,11 @@ namespace PZ3_NetworkService
         private bool file = false;
         private string path = @"C:\Users\Selenic\Desktop\SelenicPz3\PZ3-NetworkService\LogFile.txt";
         
-        private static ObservableCollection<Ventil> ListObj { get; set; }
+        private static ObservableCollection<Vodomer> ListObj { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            ListObj = new ObservableCollection<Ventil>();
+            ListObj = new ObservableCollection<Vodomer>();
             createListener(); //Povezivanje sa serverskom aplikacijom
         }
 
@@ -79,15 +79,15 @@ namespace PZ3_NetworkService
                             Console.WriteLine(incomming); //Na primer: "Objekat_1:272"
                             string[] split = incomming.Split('_', ':');
                             int index = Int32.Parse(split[1]);
-                            if (VentilViewModel.Ventils.Count> index)
-                                id = VentilViewModel.Ventils[index].Id;
+                            if (VodomerViewModel.Vodomeri.Count> index)
+                                id = VodomerViewModel.Vodomeri[index].Id;
                             else
                                 id = -1;
                             value = double.Parse(split[2]);
-                            Ventil v = new Ventil(id);
+                            Vodomer v = new Vodomer(id);
                              if (id !=-1)
                             {
-                                VentilViewModel.Ventils[index].Value = value;
+                                VodomerViewModel.Vodomeri[index].Value = value;
                                  UpisUFajl();
                             }
                             //################ IMPLEMENTACIJA ####################

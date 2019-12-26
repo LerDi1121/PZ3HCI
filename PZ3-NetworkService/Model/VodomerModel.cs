@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 //C:\Users\Selenic\Desktop\SelenicPz3\PZ3-NetworkService\PZ3-NetworkService\Images
 namespace PZ3_NetworkService.Model
 {
-    public class VentilModel
+    public class VodomerModel
     {
 
     }
-    public class Ventil : INotifyPropertyChanged
+    public class Vodomer : INotifyPropertyChanged
     {
 
         private int id;
@@ -19,13 +19,13 @@ namespace PZ3_NetworkService.Model
         private double value;
         private Type typeV;
   
-        public Ventil()
+        public Vodomer()
         { }
-        public Ventil(int id)
+        public Vodomer(int id)
         {
             this.id = id;
         }
-        public Ventil(Ventil v)
+        public Vodomer(Vodomer v)
         {
             Id = v.Id;
             Name = v.Name;

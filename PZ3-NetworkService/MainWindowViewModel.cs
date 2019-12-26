@@ -10,7 +10,7 @@ namespace PZ3_NetworkService
     public class MainWindowViewModel : BindableBase
     {
         public MyICommand<string> NavCommand { get; private set; }
-        private VentilViewModel ventilModelView = new VentilViewModel();
+        private VodomerViewModel vodomerModelView = new VodomerViewModel();
         private ReportViewModel reportViewModel = new ReportViewModel();
         private DDViewModel networkViewModel = new DDViewModel();
         private DataChartViewModel DataChart = new DataChartViewModel();
@@ -18,7 +18,7 @@ namespace PZ3_NetworkService
         public MainWindowViewModel()
         {
             NavCommand = new MyICommand<String>(OnNav);
-            CurrentViewModel = ventilModelView;
+            CurrentViewModel = vodomerModelView;
         }
         public BindableBase CurrentViewModel
         {
@@ -34,7 +34,7 @@ namespace PZ3_NetworkService
             switch (destination)
             {
                 case "Network Data":
-                    CurrentViewModel = ventilModelView;
+                    CurrentViewModel = vodomerModelView;
                     break;
                 case "Report View":
                     CurrentViewModel = reportViewModel;

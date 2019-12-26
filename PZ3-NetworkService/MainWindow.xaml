@@ -18,8 +18,8 @@
         <KeyBinding Key="F4" Command="{Binding NavCommand}" CommandParameter="Data Chart"/>
     </Window.InputBindings>
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewModel:VentilViewModel}">
-            <views:VentilView/>
+        <DataTemplate DataType="{x:Type viewModel:VodomerViewModel}">
+            <views:VodomerView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModel:ReportViewModel}">
             <views:ReportView/>

@@ -18,12 +18,12 @@ namespace PZ3_NetworkService.Views
     /// <summary>
     /// Interaction logic for VentilView.xaml
     /// </summary>
-    public partial class VentilView : UserControl
+    public partial class VodomerView : UserControl
     {
-        public VentilView()
+        public VodomerView()
         {
             InitializeComponent();
-            this.DataContext = new PZ3_NetworkService.ViewModel.VentilViewModel();
+            this.DataContext = new PZ3_NetworkService.ViewModel.VodomerViewModel();
         }
     }
 }

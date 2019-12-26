@@ -14,16 +14,16 @@ namespace PZ3_NetworkService.ViewModel
 {
     public class DDViewModel:BindableBase
     {
-        public static Ventil draggItm = null;
+        public static Vodomer draggItm = null;
         private bool dragging = false;
         private static bool exists = false;
         private int selectedIndex = 0;
 
         private ListView lv;
-        public BindingList<Ventil> Items { get; set; }
+        public BindingList<Vodomer> Items { get; set; }
         //komande 
         public MyICommand<ListView> MLBUCommand { get; set; }
-        public MyICommand<Ventil> SCCommand { get; set; }
+        public MyICommand<Vodomer> SCCommand { get; set; }
         public MyICommand<Canvas> DCommand { get; set; }//on drop
         public MyICommand<Canvas> FreeCommand { get; set; }//on free
         public MyICommand<Canvas> DOCommand { get; set; }//drag over
@@ -33,7 +33,7 @@ namespace PZ3_NetworkService.ViewModel
         public List<Canvas> CanvasList { get; set; } = new List<Canvas>();
         
         //obj koji su dodati u canvas
-        public static Dictionary<string, Ventil> CanvasObj { get; set; } = new Dictionary<string, Ventil>();
+        public static Dictionary<string, Vodomer> CanvasObj { get; set; } = new Dictionary<string, Vodomer>();
         public int SelectedIndex
         {
             get => selectedIndex;
@@ -48,14 +48,14 @@ namespace PZ3_NetworkService.ViewModel
 
         public DDViewModel()
         {
-            Items = new BindingList<Ventil>();
+            Items = new BindingList<Vodomer>();
                    
-                foreach(Ventil ven in VentilViewModel.Ventils)
+                foreach(Vodomer ven in VodomerViewModel.Vodomeri)
                 {
                      exists = false;
-                    foreach(Ventil venCn in CanvasObj.Values)
+                    foreach(Vodomer Vodmer in CanvasObj.Values)
                     {
-                        if(ven.Id==venCn.Id)
+                        if(ven.Id==Vodmer.Id)
                         {
                         exists = true;
                             break;
@@ -63,11 +63,12 @@ namespace PZ3_NetworkService.ViewModel
                        
                     }
                 if (exists == false)
-                    Items.Add(new Ventil(ven));
+                    Items.Add(new Vodomer(ven));
             }
-            //komande 
+        
+                        //komande 
             MLBUCommand = new MyICommand<ListView>(OnMLBU);
-            SCCommand = new MyICommand<Ventil>(SelectionChange);
+            SCCommand = new MyICommand<Vodomer>(SelectionChange);
             DCommand = new MyICommand<Canvas>(OnDrop);
             FreeCommand = new MyICommand<Canvas>(OnFree);
             DOCommand = new MyICommand<Canvas>(OnDragOver);
@@ -83,32 +84,56 @@ namespace PZ3_NetworkService.ViewModel
         }
         public void OnLoad(Canvas c)
         {
-            if(CanvasObj.ContainsKey(c.Name))
+            bool exist = false;
+            foreach(Vodomer v in VodomerViewModel.Vodomeri)
             {
-                BitmapImage logo = new BitmapImage();//za jednostavniji prikaz slike
-                logo.BeginInit();//signal za pocetak inicijalizacije
-                string temp = CanvasObj[c.Name].TypeV.Name.ToString() + ".jpg";
-                logo.UriSource = new Uri(temp,UriKind.Relative);
-                logo.EndInit();
-                c.Background = new ImageBrush(logo);
-                ((TextBlock)(c).Children[1]).Text = "";
-                c.Resources.Add("taken", true);
-                CheckValue(c);
+                if(CanvasObj.ContainsKey(c.Name))
+                if (CanvasObj[c.Name].Id == v.Id)
+                    exist = true;
+            }
+            if(exist)
+            {
+                if (CanvasObj.ContainsKey(c.Name))
+                {
+                    BitmapImage logo = new BitmapImage();//za jednostavniji prikaz slike
+                    logo.BeginInit();//signal za pocetak inicijalizacije
+                    string temp = CanvasObj[c.Name].TypeV.Name.ToString() + ".jpg";
+                    logo.UriSource = new Uri(temp, UriKind.Relative);
+                    logo.EndInit();
+                    c.Background = new ImageBrush(logo);
+                    ((TextBlock)(c).Children[1]).Text = "";
+                    ((TextBlock)(c).Children[3]).Text = CanvasObj[c.Name].Id + ". " + CanvasObj[c.Name].Name;
+                    c.Resources.Add("taken", true);
+                    CheckValue(c);
 
+                }
+                if (!CanvasList.Contains(c))
+                {
+                    CanvasList.Add(c);
+                }
             }
-            if(!CanvasList.Contains(c))
+            else
             {
-                CanvasList.Add(c);
+                c.Background = Brushes.White;
+                foreach (Vodomer v in VodomerViewModel.Vodomeri)
+             
+                c.Resources.Remove("taken");
+                ((TextBlock)(c).Children[3]).Text = "";
+                ((TextBlock)(c).Children[3]).Background = Brushes.Transparent;
+
+                CanvasObj.Remove(c.Name);
             }
+           
         }
 
         private void CheckValue(Canvas c)
         {
-            Dictionary<int, Ventil> temp = new Dictionary<int, Ventil>();
-            foreach(var v in VentilViewModel.Ventils)
+            Dictionary<int, Vodomer> temp = new Dictionary<int, Vodomer>();
+            foreach(var v in VodomerViewModel.Vodomeri)
             {
                 temp.Add(v.Id, v);
             }
+           
             Task.Delay(1000).ContinueWith(_ =>
               {
                   Application.Current.Dispatcher.Invoke(() =>
@@ -118,7 +143,7 @@ namespace PZ3_NetworkService.ViewModel
                               if (CanvasObj.ContainsKey(c.Name))
                               {
                                   //try i onfs ga izbaciti izbaciti sa kanvasa
-                                  if (temp[CanvasObj[c.Name].Id].Value <= 5 || temp[CanvasObj[c.Name].Id].Value >= 16)
+                                  if (temp[CanvasObj[c.Name].Id].Value < 670 || temp[CanvasObj[c.Name].Id].Value >730)
                                   {
                                       ((Border)(c).Children[0]).BorderBrush = Brushes.Red;
                                   }
@@ -129,7 +154,14 @@ namespace PZ3_NetworkService.ViewModel
                               }
                               else
                               {
-                                  ((Border)(c).Children[0]).BorderBrush = Brushes.Transparent;
+                                  //c.Background = Brushes.White;
+                      
+                                  //c.Resources.Remove("taken");
+                                  //((TextBlock)(c).Children[3]).Text = "";
+                                  //((TextBlock)(c).Children[3]).Background = Brushes.Transparent;
+
+                                  //CanvasObj.Remove(c.Name);
+                                  //((Border)(c).Children[0]).BorderBrush = Brushes.Transparent;
                               }
                           }
                   });
@@ -142,6 +174,7 @@ namespace PZ3_NetworkService.ViewModel
             {
                 ((TextBlock)(c).Children[1]).Text = "";
                 ((TextBlock)(c).Children[1]).Background = Brushes.Transparent;
+      
             }
         }
         public void OnDragOver(Canvas c)
@@ -160,12 +193,15 @@ namespace PZ3_NetworkService.ViewModel
                 {
                     //ako je
                     c.Background = Brushes.White;
-                    foreach (Ventil v in VentilViewModel.Ventils)
+                    foreach (Vodomer v in VodomerViewModel.Vodomeri)
                     {
                         if (!Items.Contains(v) && CanvasObj[c.Name].Id == v.Id)
-                            Items.Add(new Ventil(v));
+                            Items.Add(new Vodomer(v));
                     }
                     c.Resources.Remove("taken");
+                    ((TextBlock)(c).Children[3]).Text = "";
+                    ((TextBlock)(c).Children[3]).Background = Brushes.Transparent;
+      
                     CanvasObj.Remove(c.Name);
                 }
             }
@@ -191,6 +227,8 @@ namespace PZ3_NetworkService.ViewModel
                     c.Background = new ImageBrush(logo);
                     CanvasObj[c.Name] = draggItm;
                     c.Resources.Add("taken", true);
+                    ((TextBlock)(c).Children[3]).Text = draggItm.Id+". "+ draggItm.Name;
+                    ((TextBlock)(c).Children[3]).Background = Brushes.Transparent;
                     Items.Remove(Items.Single(x => x.Id == draggItm.Id));
                     SelectedIndex = 0;
                     CheckValue(c);
@@ -204,14 +242,19 @@ namespace PZ3_NetworkService.ViewModel
             lw.SelectedItem = null;
             dragging = false;
         }
-        public void SelectionChange(Ventil v)
+        public void SelectionChange(Vodomer v)
         {
-            if(!dragging)
+            if (!dragging)
             {//izvrsi promenu ako nema pomeranja
-                dragging = true;
-                draggItm = new Ventil(v);
-                DragDrop.DoDragDrop(lv,draggItm,DragDropEffects.Move);
-            }
+                try {
+                    dragging = true;
+                    draggItm = new Vodomer(v);
+                    DragDrop.DoDragDrop(lv, draggItm, DragDropEffects.Move);
+                }catch
+                {
+
+                }
+                }
         }
     }
 }

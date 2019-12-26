@@ -12,7 +12,7 @@ namespace PZ3_NetworkService.ViewModel
 
     public class DataChartViewModel : BindableBase
     {
-        public static List<string> VentilsBar { get; set; } = new List<string>();
+        public static List<string> VodomerBar { get; set; } = new List<string>();
         private List<string> values = new List<string>();
         private List<string> time = new List<string>();
         private string selectedId = "";
@@ -62,7 +62,7 @@ namespace PZ3_NetworkService.ViewModel
 
         public DataChartViewModel()
         {
-            VentilsBar.Clear();
+            VodomerBar.Clear();
           for (int i=0; i<7;i++)
           {
                
@@ -70,18 +70,18 @@ namespace PZ3_NetworkService.ViewModel
                 Time.Add( "Not defined");
           }
 
-            foreach(Ventil v in VentilViewModel.Ventils)
+            foreach(Vodomer v in VodomerViewModel.Vodomeri)
             {
-                VentilsBar.Add(v.Id.ToString());
-                if(v.TypeV.Name== "Nepovratni ventil")
+                VodomerBar.Add(v.Id.ToString());
+                if(v.TypeV.Name== "IndustrijskiVodomer")
                 {
                     types[0]++;
                 }
-                if (v.TypeV.Name == "Vodeni ventil")
+                if (v.TypeV.Name == "TurbinskiVodomer")
                 {
                     types[1]++;
                 }
-                if (v.TypeV.Name == "Ventil pod pritiskom")
+                if (v.TypeV.Name == "Vodomer")
                 {
                     types[2]++;
                 }
@@ -136,13 +136,39 @@ namespace PZ3_NetworkService.ViewModel
             foreach (List<string> ls in FileDataForSelectedID)
             {
                 double temp = double.Parse(ls[3]);
-               temp = temp*15 ;
-                int temp2 = (int)temp;
-                Values[j] = temp2.ToString();
-                Time[j] = ls[1];
-                OnPropertyChanged("Values");
-                OnPropertyChanged("Time");
-                j++;
+                if (770 > temp && temp > 640)
+                {
+                    temp = (temp - 640) * 2;
+                    int temp2 = (int)temp;
+                    Values[j] = temp2.ToString();
+                    Time[j] = ls[1];
+                    OnPropertyChanged("Values");
+                    OnPropertyChanged("Time");
+                    j++;
+                }
+                else
+                {
+                    if(temp >= 770)
+                    {
+                        int maxVal = 265;
+                        Values[j] = maxVal.ToString();
+                        Time[j] = ls[1];
+                        OnPropertyChanged("Values");
+                        OnPropertyChanged("Time");
+                        j++;
+
+                    }
+                    else if( temp <=640)
+                    {
+                        int minval = 0;
+                        Values[j] = minval.ToString();
+                        Time[j] = ls[1];
+                        OnPropertyChanged("Values");
+                        OnPropertyChanged("Time");
+                        j++;
+                    }
+
+                }
             }
             for(;j<7; j++)
             {

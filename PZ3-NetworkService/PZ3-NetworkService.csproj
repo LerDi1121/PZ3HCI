@@ -68,7 +68,7 @@
     <Compile Include="ViewModel\DataChartViewModel.cs" />
     <Compile Include="ViewModel\DDViewModel.cs" />
     <Compile Include="ViewModel\ReportViewModel.cs" />
-    <Compile Include="ViewModel\VentilViewModel.cs" />
+    <Compile Include="ViewModel\VodomerViewModel.cs" />
     <Compile Include="Views\DataChartView.xaml.cs">
       <DependentUpon>DataChartView.xaml</DependentUpon>
     </Compile>
@@ -78,8 +78,8 @@
     <Compile Include="Views\ReportView.xaml.cs">
       <DependentUpon>ReportView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\VentilView.xaml.cs">
-      <DependentUpon>VentilView.xaml</DependentUpon>
+    <Compile Include="Views\VodomerView.xaml.cs">
+      <DependentUpon>VodomerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="VML\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
@@ -106,13 +106,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\VentilView.xaml">
+    <Page Include="Views\VodomerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\VentilModel.cs" />
+    <Compile Include="Model\VodomerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -140,9 +140,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Nepovratni ventil.jpg" />
-    <Resource Include="Images\Ventil pod pritiskom.jpg" />
-    <Resource Include="Images\Vodeni ventil.jpg" />
+    <Resource Include="Images\IndustrijskiVodomer.jpg" />
+    <Resource Include="Images\TurbinskiVodomer.jpg" />
+    <Resource Include="Images\Vodomer.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,7 +16,7 @@
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="820" Height="50" >
             <Label Content="Network View" FontSize="20" FontStyle="Oblique"  FontWeight="Bold" Width="600" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
-        <Grid x:Name="MainCanvas" Background="#A9BCF5" Width="600" Height="305" Margin="5 70 3 3 " HorizontalAlignment="Left">
+        <Grid x:Name="MainCanvas" Background="#A9BCF5" Width="600" Height="365" Margin="10,55,0,30" HorizontalAlignment="Left">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5"/>
                 <RowDefinition Height="*"/>
@@ -29,7 +29,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Canvas x:Name="Cnv0"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="0" Grid.Row="1" Background="White">
+            <Canvas x:Name="Cnv0"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="0" Grid.Row="1" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv0}"/>
@@ -46,9 +46,10 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="0" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv0}"/>
+                <Button TabIndex="0" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv0}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv1"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="1" Grid.Row="1" Background="White">
+            <Canvas x:Name="Cnv1"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="1" Grid.Row="1" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv1}"/>
@@ -65,9 +66,10 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" />
-                <Button TabIndex="1" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}" CommandParameter="{Binding ElementName=Cnv1}"/>
+                <Button TabIndex="1" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}" CommandParameter="{Binding ElementName=Cnv1}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv2"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="2" Grid.Row="1" Background="White">
+            <Canvas x:Name="Cnv2"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="2" Grid.Row="1" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv2}"/>
@@ -84,9 +86,10 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="2" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv2}"/>
+                <Button TabIndex="2" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv2}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv3"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="3" Grid.Row="1" Background="White">
+            <Canvas x:Name="Cnv3"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="3" Grid.Row="1" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv3}"/>
@@ -102,10 +105,12 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
+         
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="3" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv3}"/>
+                <Button TabIndex="3" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv3}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv4"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="0" Grid.Row="2" Background="White">
+            <Canvas x:Name="Cnv4"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="0" Grid.Row="2" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv4}"/>
@@ -122,9 +127,10 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="4" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv4}"/>
+                <Button TabIndex="4" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv4}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv5"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="1" Grid.Row="2" Background="White">
+            <Canvas x:Name="Cnv5"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="1" Grid.Row="2" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv5}" />
@@ -141,9 +147,10 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="5" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv5}"/>
+                <Button TabIndex="5" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv5}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv6"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="2" Grid.Row="2" Background="White">
+            <Canvas x:Name="Cnv6"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="2" Grid.Row="2" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv6}"/>
@@ -160,9 +167,10 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="6" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv6}"/>
+                <Button TabIndex="6" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv6}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv7"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="3" Grid.Row="2" Background="White">
+            <Canvas x:Name="Cnv7"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="3" Grid.Row="2" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv7}"/>
@@ -179,9 +187,10 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="7" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv7}"/>
+                <Button TabIndex="7" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv7}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv8"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="0" Grid.Row="3" Background="White">
+            <Canvas x:Name="Cnv8"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="0" Grid.Row="3" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv8}"/>
@@ -198,9 +207,10 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="8" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv8}"/>
+                <Button TabIndex="8" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv8}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv9"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="1" Grid.Row="3" Background="White">
+            <Canvas x:Name="Cnv9"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="1" Grid.Row="3" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv9}"/>
@@ -217,9 +227,10 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="9" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv9}"/>
+                <Button TabIndex="9" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv9}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv10"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="2" Grid.Row="3" Background="White">
+            <Canvas x:Name="Cnv10"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="2" Grid.Row="3" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv10}"/>
@@ -236,9 +247,10 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="10" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv10}"/>
+                <Button TabIndex="10" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv10}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
-            <Canvas x:Name="Cnv11"  Width="140" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="3" Grid.Row="3" Background="White">
+            <Canvas x:Name="Cnv11"  Width="140" Height="95" VerticalAlignment="Top" HorizontalAlignment="Center" AllowDrop="True" Grid.Column="3" Grid.Row="3" Background="White">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Drop">
                         <i:InvokeCommandAction Command="{Binding DCommand}" CommandParameter="{Binding ElementName=Cnv11}"/>
@@ -255,10 +267,11 @@
                 </i:Interaction.Triggers>
                 <Border Width="140" Height="95" BorderThickness="3"/>
                 <TextBlock  Width=" 140" Height="40" FontSize="35" TextAlignment="Center" Canvas.Top="20" Foreground="Red" Background="Transparent"/>
-                <Button TabIndex="11" Width="140" Height="20" Content="Remove" Canvas.Top="75" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv11}"/>
+                <Button TabIndex="11" Width="140" Height="20" Content="Remove" Canvas.Top="95" Command="{Binding FreeCommand}"  CommandParameter="{Binding ElementName=Cnv11}"/>
+                <TextBlock  Width=" 140" Height="20" FontSize="15" TextAlignment="Center" Canvas.Top="0" Foreground="Black" Background="Transparent"/>
             </Canvas>
         </Grid>
-        <ListView x:Name="MainList" Width="160" HorizontalAlignment="Right" Margin="0,106,10,39" ItemsSource="{Binding Items, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" ScrollViewer.CanContentScroll="True">
+        <ListView x:Name="MainList" Width="160" HorizontalAlignment="Right" Margin="0,55,10,30" ItemsSource="{Binding Items, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" ScrollViewer.CanContentScroll="True">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseLeftButtonUp">
                     <i:InvokeCommandAction Command="{Binding MLBUCommand}" CommandParameter="{Binding ElementName=MainList}"/>

@@ -9,15 +9,15 @@ using System.Windows;
 
 namespace PZ3_NetworkService.ViewModel
 {
-    public class VentilViewModel : BindableBase
+    public class VodomerViewModel : BindableBase
     {
-        public static List<string> VentilTypes { get; set; } = new List<string> { "Ventil pod pritiskom", "Nepovratni ventil", "Vodeni ventil" };//listaventila
-        private ObservableCollection<Ventil> FilterVentils { get; set; } = new ObservableCollection<Ventil>();
-        public static ObservableCollection<Ventil> Ventils { get; set; } = new ObservableCollection<Ventil>();
-        public static ObservableCollection<Ventil> VentilsCopy { get; set; } = new ObservableCollection<Ventil>();
+        public static List<string> VodomerTypes { get; set; } = new List<string> { "IndustrijskiVodomer", "TurbinskiVodomer", "Vodomer" };//listavodomera
+        private ObservableCollection<Vodomer> FilterVodomer { get; set; } = new ObservableCollection<Vodomer>();
+        public static ObservableCollection<Vodomer> Vodomeri { get; set; } = new ObservableCollection<Vodomer>();
+        public static ObservableCollection<Vodomer> VodomeriCopy { get; set; } = new ObservableCollection<Vodomer>();
 
         //za filter
-        private string selectedTypeVent=string.Empty;
+        private string selectedTypeVodomer=string.Empty;
         private int lowOrHigh = -1;
         private int inOrOutValues = -1;
         private int idForFilter = -1;
@@ -29,12 +29,12 @@ namespace PZ3_NetworkService.ViewModel
         private string path="";
 
 
-        private Ventil selectedVentil;//selektovan u listi 
+        private Vodomer selectedVodomer;//selektovan u listi 
 
         private string idText; //za vrednosti polja
         private string nameText;
        // private string valueText;
-        private string selectedTypeVent2=string.Empty;
+        private string selectedTypeVodomer2=string.Empty;
 
         public MyICommand DeleteCommand { get; set; }//kontrola komande
         public MyICommand AddCommand { get; set; }
@@ -46,9 +46,9 @@ namespace PZ3_NetworkService.ViewModel
 
         public MyICommand HighValueCommand { get; set; }
 
-        public VentilViewModel()
+        public VodomerViewModel()
         {
-         //   LoadVentils();
+        
             DeleteCommand = new MyICommand(OnDelete, CanDelete);
             AddCommand = new MyICommand(OnAdd, CanAdd);
             FilterCommand = new MyICommand(OnFilter, CanFilter);
@@ -59,15 +59,15 @@ namespace PZ3_NetworkService.ViewModel
             ExpectedValuesCommand = new MyICommand(OnExpected);
         }
 
-        public Ventil SelectedVentil
+        public Vodomer SelectedVodomer
         {
             get
             {
-                return selectedVentil;
+                return selectedVodomer;
             }
             set
             {
-                selectedVentil = value;
+                selectedVodomer = value;
                 DeleteCommand.RaiseCanExecuteChanged();
             }
 
@@ -110,30 +110,30 @@ namespace PZ3_NetworkService.ViewModel
        
      
 
-        public string SelectedTypeVent2
+        public string SelectedTypeVodomer2
         {
-            get => selectedTypeVent2;
+            get => selectedTypeVodomer2;
             set
             {
-                if (selectedTypeVent2 != value)
+                if (selectedTypeVodomer2 != value)
                 {
-                    selectedTypeVent2 = value;
+                    selectedTypeVodomer2 = value;
                     Path = pathFirst + value.ToString() + ".jpg";
                     OnPropertyChanged("Path");
-                    OnPropertyChanged("SelectedTypeVentil2");
+                    OnPropertyChanged("SelectedTypeVodomer2");
                     AddCommand.RaiseCanExecuteChanged();
                 }
             }
         }
-        public string SelectedTypeVent
+        public string SelectedTypeVodomer
         {
-            get => selectedTypeVent;
+            get => selectedTypeVodomer;
             set
             {
-                if (selectedTypeVent != value)
+                if (selectedTypeVodomer != value)
                 {
-                    selectedTypeVent = value;
-                    OnPropertyChanged("SelectedTypeVentil");
+                    selectedTypeVodomer = value;
+                    OnPropertyChanged("SelectedTypeVodomer");
                     FilterCommand.RaiseCanExecuteChanged();
                 }
             }
@@ -155,15 +155,15 @@ namespace PZ3_NetworkService.ViewModel
 
         private bool CanDelete()
         {
-            return SelectedVentil != null;
+            return SelectedVodomer != null;
         }
         private void OnDelete()
         {
-            Ventils.Remove(SelectedVentil);
+            Vodomeri.Remove(SelectedVodomer);
         }
         private bool CanAdd()
         {
-            if (SelectedTypeVent2 != null && IdText != null && NameText != null)
+            if (SelectedTypeVodomer2 != null && IdText != null && NameText != null)
                 return true;
             return false;
         }
@@ -186,7 +186,7 @@ namespace PZ3_NetworkService.ViewModel
                 return;
             }
             bool exists = false;
-            foreach(Ventil v in Ventils)
+            foreach(Vodomer v in Vodomeri)
             {
                 if(v.Id==tempID)
                 {
@@ -198,8 +198,8 @@ namespace PZ3_NetworkService.ViewModel
                 System.Windows.MessageBox.Show("ID must be unique!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            Model.Type temp = new Model.Type(selectedTypeVent2,@"C: \Users\Selenic\Desktop\SelenicPz3\PZ3-NetworkService\PZ3-NetworkService\Images\"+SelectedTypeVent2.ToString()+".jpg");
-            Ventils.Add(new Ventil { Id = tempID, Name = NameText, Value = 5.5, TypeV = temp });
+            Model.Type temp = new Model.Type(selectedTypeVodomer2,@"C: \Users\Selenic\Desktop\SelenicPz3\PZ3-NetworkService\PZ3-NetworkService\Images\"+SelectedTypeVodomer2.ToString()+".jpg");
+            Vodomeri.Add(new Vodomer { Id = tempID, Name = NameText, Value = 700, TypeV = temp });
         }
         //funkcije za postavljanje rezima filtera
         private void OnLow()
@@ -215,7 +215,7 @@ namespace PZ3_NetworkService.ViewModel
         private bool CanFilter()
         {
             bool filter=false;
-            if (((LowOrHigh !=-1) || (SelectedTypeVent != string.Empty) ||(InOrOutValues!=-1)))
+            if (((LowOrHigh !=-1) || (SelectedTypeVodomer != string.Empty) ||(InOrOutValues!=-1)))
                 filter= true;
             else
                 filter= false;
@@ -225,7 +225,7 @@ namespace PZ3_NetworkService.ViewModel
         private void OnFilter()
         {
             int val;
-            FilterVentils.Clear();
+            FilterVodomer.Clear();
             if (IdForFilterText == "")
                 val = -1;
             else
@@ -242,86 +242,86 @@ namespace PZ3_NetworkService.ViewModel
             }
             
             
-            VentilsCopy.Clear();
-            foreach (Ventil v in Ventils)
+            VodomeriCopy.Clear();
+            foreach (Vodomer v in Vodomeri)
             {
-                VentilsCopy.Add(v);
+                VodomeriCopy.Add(v);
             }
             if (LowOrHigh != -1)
             {
-                foreach (Ventil v in Ventils)
+                foreach (Vodomer v in Vodomeri)
                 {
                     //filtrirati da li je vece manje od zadatog id-a
                     if (LowOrHigh ==1)
                     {
                         if (val >= v.Id)
                         {
-                            FilterVentils.Add(v);
+                            FilterVodomer.Add(v);
                         }
                     }
                     else if (LowOrHigh == 2)
                     {
                         if (val <= v.Id)
                         {
-                            FilterVentils.Add(v);
+                            FilterVodomer.Add(v);
                         }
                     }
                 }
-                FilterInVentils();
+                FilterInVodomer();
             }
             
             if (InOrOutValues != -1)
             {
-                foreach (Ventil v in Ventils)
+                foreach (Vodomer v in Vodomeri)
                 {
                     //filtrirati po opsegu
                     if (InOrOutValues == 2)
                     {
                         if (v.Value>=5 &&v.Value<=16)
                         {
-                            FilterVentils.Add(v);
+                            FilterVodomer.Add(v);
                         }
                     }
                     else if (InOrOutValues == 1)
                     {
                         if (v.Value < 5 && v.Value > 16)
                         {
-                            FilterVentils.Add(v);
+                            FilterVodomer.Add(v);
                         }
                     }
                 }
-                FilterInVentils();
+                FilterInVodomer();
             }
-             if (SelectedTypeVent != string.Empty)
+             if (SelectedTypeVodomer != string.Empty)
              {
-                foreach (Ventil v in Ventils)
+                foreach (Vodomer v in Vodomeri)
                 {
                     //filtrirati po opsegu
-                    if (SelectedTypeVent.Equals(v.TypeV.Name))
+                    if (SelectedTypeVodomer.Equals(v.TypeV.Name))
                     {
-                        FilterVentils.Add(v);
+                        FilterVodomer.Add(v);
                     }
                 }
-                FilterInVentils();
+                FilterInVodomer();
              }
             IdForFilterText = "";
            LowOrHigh = -1;
             idForFilter = -1;
             InOrOutValues = -1;
-            SelectedTypeVent = string.Empty;
-            OnPropertyChanged("SelectedTypeVent"); 
+            SelectedTypeVodomer = string.Empty;
+            OnPropertyChanged("SelectedTypeVodomer"); 
             filtercan = true;
-            OnPropertyChanged("Ventils");
+            OnPropertyChanged("Vodomeri");
             CancelFilterCommand.RaiseCanExecuteChanged();
         }
-        private void FilterInVentils()
+        private void FilterInVodomer()
         {
-            Ventils.Clear();
-            foreach (Ventil v in FilterVentils)
+            Vodomeri.Clear();
+            foreach (Vodomer v in FilterVodomer)
             {
-                Ventils.Add(v);
+                Vodomeri.Add(v);
             }
-            FilterVentils.Clear();
+            FilterVodomer.Clear();
         }
         private bool CanCancel()
         {
@@ -330,12 +330,12 @@ namespace PZ3_NetworkService.ViewModel
         }
         private void OnCancel()
         {
-            Ventils.Clear();
-            foreach (Ventil v in VentilsCopy)
+            Vodomeri.Clear();
+            foreach (Vodomer v in VodomeriCopy)
             {
-                Ventils.Add(v);
+                Vodomeri.Add(v);
             }
-            OnPropertyChanged("Ventils");
+            OnPropertyChanged("Vodomeri");
             filtercan = false;
             CancelFilterCommand.RaiseCanExecuteChanged();
 
