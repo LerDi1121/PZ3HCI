@@ -277,14 +277,14 @@ namespace PZ3_NetworkService.ViewModel
                     //filtrirati po opsegu
                     if (InOrOutValues == 2)
                     {
-                        if (v.Value>=5 &&v.Value<=16)
+                        if (v.Value>=670 &&v.Value<=735)
                         {
                             FilterVodomer.Add(v);
                         }
                     }
                     else if (InOrOutValues == 1)
                     {
-                        if (v.Value < 5 && v.Value > 16)
+                        if (v.Value < 670 || v.Value > 735)
                         {
                             FilterVodomer.Add(v);
                         }

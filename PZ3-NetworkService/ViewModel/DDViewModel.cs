@@ -143,7 +143,7 @@ namespace PZ3_NetworkService.ViewModel
                               if (CanvasObj.ContainsKey(c.Name))
                               {
                                   //try i onfs ga izbaciti izbaciti sa kanvasa
-                                  if (temp[CanvasObj[c.Name].Id].Value < 670 || temp[CanvasObj[c.Name].Id].Value >730)
+                                  if (temp[CanvasObj[c.Name].Id].Value < 670 || temp[CanvasObj[c.Name].Id].Value >735)
                                   {
                                       ((Border)(c).Children[0]).BorderBrush = Brushes.Red;
                                   }

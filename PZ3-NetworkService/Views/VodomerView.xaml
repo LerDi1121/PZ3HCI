@@ -20,8 +20,8 @@
                     <RadioButton  Height="20"  HorizontalContentAlignment="Center" Command="{Binding ExpectedValuesCommand}" VerticalContentAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
-                    <Label Content="Out of range values" Height="27" FontSize="12"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                    <Label Content="Excepted values" Height="29" FontSize="12"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label Content="Out of range values" Height="25" FontSize="12"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Label Content="Excepted values" Height="27" FontSize="12"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </StackPanel>
                 <Label Content=" Type:  " VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" />
                 <ComboBox x:Name="cbType" Width="180" Height="40" ItemsSource="{Binding VodomerTypes}" SelectedItem="{Binding  SelectedTypeVodomer}"/>
@@ -77,7 +77,7 @@
 
             </StackPanel>
         </StackPanel>
-        <TextBlock Text="Normal value is between 670 and 730"  TextAlignment="Center" TextWrapping="Wrap" FontSize="15" Margin="591,331,37,48" />
+        <TextBlock Text="Normal value is between 670 and 735"  TextAlignment="Center" TextWrapping="Wrap" FontSize="15" Margin="591,331,37,48" />
         <TextBlock Text="Shortcuts: 
                    F1 Network Data
                    F2 Report View

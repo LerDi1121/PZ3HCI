@@ -37,10 +37,10 @@
                 <TextBlock Text="{Binding Time[4],UpdateSourceTrigger=PropertyChanged}" Width="60" Height="20" Canvas.Left="526" Canvas.Top="307" RenderTransformOrigin="0.62,0.85" />
                 <Rectangle Width="25" Height="{Binding Values[5],UpdateSourceTrigger=PropertyChanged}" Stroke="Cyan" Canvas.Left="620" Canvas.Bottom="30" Fill="DarkCyan"/>
                 <TextBlock Text="{Binding Time[5],UpdateSourceTrigger=PropertyChanged}" Width="60" Height="20" Canvas.Left="608" Canvas.Top="307" RenderTransformOrigin="0.62,0.85" />
-                <Rectangle Width="25" Height="{Binding Values[6],UpdateSourceTrigger=PropertyChanged}" Stroke="Cyan" Canvas.Left="698" Canvas.Bottom="30" Fill="DarkCyan" Canvas.Top="299"/>
+                <Rectangle Width="25" Height="{Binding Values[6],UpdateSourceTrigger=PropertyChanged}" Stroke="Cyan" Canvas.Left="698" Canvas.Bottom="30" Fill="DarkCyan" />
                 <TextBlock Text="{Binding Time[6],UpdateSourceTrigger=PropertyChanged}" Width="60" Height="20" Canvas.Left="689" Canvas.Top="307" RenderTransformOrigin="0.62,0.85" />
                 <Line X1="195" Y1="270" X2="750" Y2="270" Stroke="Red"  StrokeDashArray="1" StrokeThickness="2" Canvas.Left="3" Canvas.Top="-61" />
-                <Line X1="195" Y1="70" X2="750" Y2="70" Stroke="Red"  StrokeDashArray="1" StrokeThickness="2" Canvas.Top="49" />
+                <Line X1="195" Y1="60" X2="750" Y2="60" Stroke="Red"  StrokeDashArray="1" StrokeThickness="2" Canvas.Top="49" />
                 <Rectangle Width="20" Height="20" Stroke="Black" Fill="LightSkyBlue" Canvas.Left="30" Canvas.Top="250"/>
                 <Rectangle Width="20" Height="20" Stroke="Black" Fill="LightSlateGray" Canvas.Left="30" Canvas.Top="275"/>
                 <Rectangle Width="20" Height="20" Stroke="Black" Fill="RoyalBlue" Canvas.Left="30" Canvas.Top="300"/>
@@ -51,13 +51,13 @@
                 <Label Content="Turbinski vodomer" Canvas.Left="55" Canvas.Top="271" />
                 <Label Content="Vodomer" Canvas.Left="55" Canvas.Top="297" Height="32" />
                 <Label Content="670"  FontWeight="Bold" Canvas.Left="165" Canvas.Top="192" />
-                <Label Content="730"  FontWeight="Bold" Canvas.Left="164" Canvas.Top="102" RenderTransformOrigin="0.542,0.654" />
+                <Label Content="735"  FontWeight="Bold" Canvas.Left="165" Canvas.Top="92" RenderTransformOrigin="0.542,0.654" />
                 <Line X1="30" Y1="40" X2="130" Y2="40" Stroke="Red"  StrokeDashArray="1" StrokeThickness="2"  />
                 <Line X1="30" Y1="140" X2="130" Y2="140" Stroke="Red"  StrokeDashArray="1" StrokeThickness="2"  />
                 <Label Content="100%"  FontWeight="Bold" Canvas.Left="123" Canvas.Top="25" RenderTransformOrigin="0.542,0.654" />
                 <Label Content="50%"  FontWeight="Bold" Canvas.Left="130" Canvas.Top="126" RenderTransformOrigin="0.78,0.769" />
-                <Label Content="770"  FontWeight="Bold" Canvas.Left="165" Canvas.Top="10" RenderTransformOrigin="0.542,0.654" />
-                <Label Content="640"  FontWeight="Bold" Canvas.Left="164" Canvas.Top="282" RenderTransformOrigin="0.542,0.654" />
+                <Label Content="+770"  FontWeight="Bold" Canvas.Left="165" Canvas.Top="10" RenderTransformOrigin="0.542,0.654" />
+                <Label Content="-640"  FontWeight="Bold" Canvas.Left="160" Canvas.Top="282" RenderTransformOrigin="0.542,0.654" />
             </Canvas>
         </StackPanel>
     </Grid>
